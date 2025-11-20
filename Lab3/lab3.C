@@ -105,10 +105,12 @@ int main(){
     case 0:
                 printf("Thoat chuong trinh.\n");
                 return 0;
-            default:
+                default:
                 printf("Lua chon khong hop le.\n");
                 break;
         }
+    while (luachon != 0);
+
     return 0;
     }
 
