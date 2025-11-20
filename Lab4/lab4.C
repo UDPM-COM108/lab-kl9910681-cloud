@@ -74,7 +74,7 @@ int main(){
     for (i = i - 1; i >= 0; i--) {
         printf("%d\n", nhiphan[i]);}
             break;}
-            case 0: {
+        case 0: {
             printf("Thoat chuong trinh.\n");
              break;}
         default: {
@@ -84,5 +84,4 @@ int main(){
         }while (luachon != 0);
     }
 return 0;
- }
-
+}
