@@ -31,6 +31,49 @@ void kiemtraso(){
             printf("%d khong phai la so chinh phuong\n", x);
         }
     }
+
+    void uocboichung(){
+        int x,y,l,n;
+        printf("Nhap 2 so:");
+        scanf("%d %d", &x, &y);
+        for(int i=1; i<=x && i<=y; i++){
+            if(x % i ==0 && y % i ==0){
+                l=i;
+            }
+        }
+        n = (x*y)/l;
+        printf("\nUoc chung lon nhat la: %d", l);
+        printf("\nBoi chung nho nhat la: %d", n);
+    }
+
+    void karaoke(){
+        int a,b,c,tien;
+        printf("Nhap gio bat dau");
+        scanf("%d", &a);
+        printf("Nhap gio ket thuc");
+        scanf("%d", &b);
+        if (a<12 || b>23 || a>=b){
+            printf("Quan khong hoat dong trong thoi gian tren! Vui long nhap lai!");
+            return;
+        }
+        int t = b - a;
+        if (t<=3){
+            tien = t * 50000;
+        }
+        else {
+            tien = 150000+(t - 3)*50000;
+        }
+        if(t>3){
+            tien *=0.7;
+        }
+        if(a>=14 && b<=17){
+            tien *=0.9;
+        }
+        printf("Tong gio hat la: \n", t);
+        printf("So tien can phai thanh toan la: ", tien);
+    }
+
+
     int main (){
     int luachon;
     printf("------------------------------------------------------------\n");
@@ -39,7 +82,7 @@ void kiemtraso(){
     printf("Cac chuc nang cua chuong trinh: \n");
     printf("Chuong trinh 1: Kiem tra so nguyen.\n");
     printf("Chuong trinh 2: Tim uoc so chung va boi so chung cua 2 so.\n");
-    printf("Chuong trinh 3: Tinh tien dien cho quan Karaoke.\n");
+    printf("Chuong trinh 3: Tinh tien cho quan Karaoke.\n");
     printf("Chuong trinh 4: Tinh tien dien.\n");
     printf("Chuong trinh 5: Doi tien.\n");
     printf("Chuong trinh 6: Tinh lai xuat ngan hang vai tra gop.\n");
@@ -52,6 +95,14 @@ void kiemtraso(){
     switch (luachon){
         case 1:{
            kiemtraso();
+            break;
+        }
+        case 2:{
+            uocboichung();
+            break;
+        }
+        case 3:{
+            karaoke();
             break;
         }
     }
