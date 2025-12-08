@@ -73,6 +73,99 @@ void kiemtraso(){
         printf("So tien can phai thanh toan la: ", tien);
     }
 
+    void tiendien(){
+        float a, tong;
+        printf("Nhap so dien(KwH): ");
+        scanf("%f", &a);
+       if (a>0&&a<=50){
+        tong = a *1678;
+         printf("So tien dien phai tra la: %f", tong);}
+    else if (a>50&&a<=100){
+        tong = a *1734;
+        printf("So tien dien phai tra la: %f", tong);}
+    else if (a>100&&a<=200){ 
+        tong = a *2014;
+        printf("So tien dien phai tra la: %f", tong);}
+    else if (a>200&&a<=300){
+        tong = a *2536;
+        printf("So tien dien phai tra la: %f", tong);}
+    else if (a>300&&a<=400){
+        tong = a *2834;
+        printf("So tien dien phai tra la: %f", tong);}
+    else if (a>400){
+        tong = a *2927;
+        printf("So tien dien phai tra la: %f", tong);}
+    }
+
+    void laisuat (){
+        double a;
+        double lai = 5;     
+        int thang = 12;     
+        printf("Nhap so tien muon vay: ");
+        scanf("%lf", &a);
+        double n = a / thang;
+        double c = a;
+        printf("\n%-5s %-15s %-15s %-15s %-15s\n",
+            "Thang", "Lai phai tra", "Goc phai tra",
+            "So tien phai tra", "So tien con lai");
+        for (int i = 1; i <= thang; i++) {
+            double l = c * (lai / 100.0);
+            double t = n + l;
+            c -= n;
+            if (c < 1e-6) c = 0;
+            printf("%-5d %-15.0f %-15.0f %-15.0f %-15.0f\n",
+                i, l, n, t, c);
+    }
+    }
+
+    void sapxep(){
+        int n, i, j;
+        char ten[n][30];
+        float diem[n];
+        char hocluc[n][20];
+    printf("Nhap so sinh vien: ");
+    scanf("%d", &n);
+    for (i = 0; i < n; i++) {
+        printf("\nNhap ten sinh vien %d: ", i + 1);
+        scanf("%s", ten[i]);
+        do {
+        printf("Nhap diem sinh vien %d: ", i + 1);
+        scanf("%f", &diem[i]);
+                    if (diem[i] < 0 || diem[i] > 10)
+                printf("Diem khong hop le! Yeu cau nhap lai.\n");
+        } while (diem[i] < 0 || diem[i] > 10);
+        if (diem[i] >= 9)        strcpy(hocluc[i], "Xuat sac");
+        else if (diem[i] >= 8)   strcpy(hocluc[i], "Gioi");
+        else if (diem[i] >= 6.5) strcpy(hocluc[i], "Kha");
+        else if (diem[i] >= 5)   strcpy(hocluc[i], "Trung binh");
+        else strcpy(hocluc[i], "Yeu");
+    }
+    for (i = 0; i < n - 1; i++) {
+        for (j = i + 1; j < n; j++) {
+            if (diem[i] < diem[j]) {
+                float tempd = diem[i];
+                diem[i] = diem[j];
+                diem[j] = tempd;
+
+                char tempten[30];
+                strcpy(tempten, ten[i]);
+                strcpy(ten[i], ten[j]);
+                strcpy(ten[j], tempten);
+
+                char tempxl[20];
+                strcpy(tempxl, hocluc[i]);
+                strcpy(hocluc[i], hocluc[j]);
+                strcpy(hocluc[j], tempxl);
+            }
+        }
+    }
+    printf("\nDanh sach sinh vien:\n");
+    printf("%-15s %-10s %-15s\n", "Ten", "Diem", "Hoc luc");
+    for (i = 0; i < n; i++) {
+        printf("%-15s %-10.2f %-15s\n", ten[i], diem[i], hocluc[i]);
+    }
+    }
+
 
     int main (){
     int luachon;
@@ -103,6 +196,18 @@ void kiemtraso(){
         }
         case 3:{
             karaoke();
+            break;
+        }
+        case 4:{
+            tiendien();
+            break;
+        }
+        case 6:{
+            laisuat();
+            break;
+        }
+        case 8:{
+            sapxep();
             break;
         }
     }
