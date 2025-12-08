@@ -136,7 +136,7 @@ void kiemtraso(){
         } while (diem[i] < 0 || diem[i] > 10);
         if (diem[i] >= 9)        strcpy(hocluc[i], "Xuat sac");
         else if (diem[i] >= 8)   strcpy(hocluc[i], "Gioi");
-        else if (diem[i] >= 6.5) strcpy(hocluc[i], "Kha");
+        else if (diem[i] >= 7) strcpy(hocluc[i], "Kha");
         else if (diem[i] >= 5)   strcpy(hocluc[i], "Trung binh");
         else strcpy(hocluc[i], "Yeu");
     }
