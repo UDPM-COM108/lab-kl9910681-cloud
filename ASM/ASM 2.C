@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
 
 void kiemtraso(){
     int x,i,c,dem=0;
@@ -118,53 +119,55 @@ void kiemtraso(){
     }
     }
 
-    void sapxep(){
-        int n, i, j;
-        char ten[n][30];
-        float diem[n];
-        char hocluc[n][20];
+void sapxep() {
+    int n;
+    char ten[100][100];
+    float diem[100];
+    char hocluc[100][100];
     printf("Nhap so sinh vien: ");
     scanf("%d", &n);
-    for (i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) {
         printf("\nNhap ten sinh vien %d: ", i + 1);
         scanf("%s", ten[i]);
-        do {
-        printf("Nhap diem sinh vien %d: ", i + 1);
-        scanf("%f", &diem[i]);
-                    if (diem[i] < 0 || diem[i] > 10)
+        do {         
+            printf("Nhap diem sinh vien %d: ", i + 1);
+            scanf("%f", &diem[i]);
+            if (diem[i] < 0 || diem[i] > 10)
                 printf("Diem khong hop le! Yeu cau nhap lai.\n");
         } while (diem[i] < 0 || diem[i] > 10);
-        if (diem[i] >= 9)        strcpy(hocluc[i], "Xuat sac");
-        else if (diem[i] >= 8)   strcpy(hocluc[i], "Gioi");
+        if (diem[i] >= 9) strcpy(hocluc[i], "Xuat sac");
+        else if (diem[i] >= 8) strcpy(hocluc[i], "Gioi");
         else if (diem[i] >= 7) strcpy(hocluc[i], "Kha");
-        else if (diem[i] >= 5)   strcpy(hocluc[i], "Trung binh");
+        else if (diem[i] >= 5) strcpy(hocluc[i], "Trung binh");
         else strcpy(hocluc[i], "Yeu");
     }
-    for (i = 0; i < n - 1; i++) {
-        for (j = i + 1; j < n; j++) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
             if (diem[i] < diem[j]) {
-                float tempd = diem[i];
+
+                float tmpd = diem[i];
                 diem[i] = diem[j];
-                diem[j] = tempd;
+                diem[j] = tmpd;
 
-                char tempten[30];
-                strcpy(tempten, ten[i]);
+                char tmpTen[100];
+                strcpy(tmpTen, ten[i]);
                 strcpy(ten[i], ten[j]);
-                strcpy(ten[j], tempten);
+                strcpy(ten[j], tmpTen);
 
-                char tempxl[20];
-                strcpy(tempxl, hocluc[i]);
+                char tmpXL[100];
+                strcpy(tmpXL, hocluc[i]);
                 strcpy(hocluc[i], hocluc[j]);
-                strcpy(hocluc[j], tempxl);
+                strcpy(hocluc[j], tmpXL);
             }
         }
     }
     printf("\nDanh sach sinh vien:\n");
     printf("%-15s %-10s %-15s\n", "Ten", "Diem", "Hoc luc");
-    for (i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) {
         printf("%-15s %-10.2f %-15s\n", ten[i], diem[i], hocluc[i]);
     }
-    }
+}
+
 
 
     int main (){
