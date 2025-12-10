@@ -33,7 +33,7 @@ void kiemtraso(){
         }
     }
 
-    void uocboichung(){
+void uocboichung(){
         int x,y,l,n;
         printf("Nhap 2 so:");
         scanf("%d %d", &x, &y);
@@ -47,7 +47,7 @@ void kiemtraso(){
         printf("\nBoi chung nho nhat la: %d", n);
     }
 
-    void karaoke(){
+void karaoke(){
         int a,b,c,tien;
         printf("Nhap gio bat dau");
         scanf("%d", &a);
@@ -74,7 +74,7 @@ void kiemtraso(){
         printf("So tien can phai thanh toan la: ", tien);
     }
 
-    void tiendien(){
+void tiendien(){
         float a, tong;
         printf("Nhap so dien(KwH): ");
         scanf("%f", &a);
@@ -98,7 +98,7 @@ void kiemtraso(){
         printf("So tien dien phai tra la: %f", tong);}
     }
 
-    void laisuat (){
+void laisuat (){
         double a;
         double lai = 5;     
         int thang = 12;     
@@ -110,7 +110,7 @@ void kiemtraso(){
             "Thang", "Lai phai tra", "Goc phai tra",
             "So tien phai tra", "So tien con lai");
         for (int i = 1; i <= thang; i++) {
-            double l = c * (lai / 100.0);
+            double l = c * (lai / 100);
             double t = n + l;
             c -= n;
             if (c < 1e-6) c = 0;
@@ -119,7 +119,7 @@ void kiemtraso(){
     }
     }
 
-void sapxep() {
+void sapxep(){
     int n;
     char ten[100][100];
     float diem[100];
@@ -135,7 +135,7 @@ void sapxep() {
             if (diem[i] < 0 || diem[i] > 10)
                 printf("Diem khong hop le! Yeu cau nhap lai.\n");
         } while (diem[i] < 0 || diem[i] > 10);
-        if (diem[i] >= 9) strcpy(hocluc[i], "Xuat sac");
+             if (diem[i] >= 9) strcpy(hocluc[i], "Xuat sac");
         else if (diem[i] >= 8) strcpy(hocluc[i], "Gioi");
         else if (diem[i] >= 7) strcpy(hocluc[i], "Kha");
         else if (diem[i] >= 5) strcpy(hocluc[i], "Trung binh");
@@ -168,9 +168,49 @@ void sapxep() {
     }
 }
 
+void doitien(){
+        int tienmat;
+        printf("Nhap so tien can doi: ");
+        scanf("%d", &tienmat);
+        int menhgia[]={500,200,100,50,20,10,5,2,1};
+        for (int i=0; i < 9; i++){
+            int dem = tienmat / menhgia[i];
+            if (dem > 0){
+                printf("%d to %d\n", dem, menhgia[i]);
+            }
+            tienmat = tienmat % menhgia[i];
+        }
 
+    }
 
-    int main (){
+void vaytien() {
+    int phantram, nam = 24;
+    float tienvaycd = 500000000;
+    float lainam = 15.0 / 100;     
+    float laithang = lainam / 12;  
+    printf("Nhap vao so phan tram vay toi da: ");
+    scanf("%d", &phantram);
+    if (phantram <= 0) {
+        printf("Moi ban nhap lai!\n");
+        return;
+    }
+    float tratruoc = (100 - phantram) / 100.0 * tienvaycd;
+    float tienvay = tienvaycd - tratruoc;
+    float tienthang = tienvay / (nam * 12);
+    printf("So tien tra lan dau: %.0f VND\n\n", tratruoc);
+    printf("=== Bang tra gop theo thang ===\n");
+    printf("Thang\tGoc\t\tLai\t\tPhai tra\n");
+    float duno = tienvay;
+    for (int i = 1; i <= nam * 12; i++) {
+        float tienLai = duno * laithang;  
+        float phaiTra = tienthang + tienLai;
+        printf("%d\t%.0f\t\t%.0f\t\t%.0f\n",
+               i, tienthang, tienLai, phaiTra);
+        duno -= tienthang;   
+    }
+}
+
+int main (){
     int luachon;
     printf("------------------------------------------------------------\n");
     printf("-------MENU CHUONG TRINH ASSIGNMENT-LA THE NAM-PS49582------\n");
@@ -184,8 +224,8 @@ void sapxep() {
     printf("Chuong trinh 6: Tinh lai xuat ngan hang vai tra gop.\n");
     printf("Chuong trinh 7: Vay tien mua xe.\n");
     printf("Chuong trinh 8: Sap xep thong tin sinh vien.\n");
-    printf("Chuong trinh 9\n");
-    printf("Chuong trinh 10\n");
+    printf("Chuong trinh 9:\n");
+    printf("Chuong trinh 10:\n");
     printf("Moi ban chon truong trinh: ");
     scanf("%d", &luachon);
     switch (luachon){
@@ -205,8 +245,16 @@ void sapxep() {
             tiendien();
             break;
         }
+        case 5:{
+            doitien();
+            break;
+        }
         case 6:{
             laisuat();
+            break;
+        }
+        case 7:{
+            vaytien();
             break;
         }
         case 8:{
@@ -214,6 +262,5 @@ void sapxep() {
             break;
         }
     }
-
     return 0;
 }
