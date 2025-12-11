@@ -49,9 +49,9 @@ void uocboichung(){
 
 void karaoke(){
         int a,b,c,tien;
-        printf("Nhap gio bat dau");
+        printf("Nhap gio bat dau: ");
         scanf("%d", &a);
-        printf("Nhap gio ket thuc");
+        printf("Nhap gio ket thuc: ");
         scanf("%d", &b);
         if (a<12 || b>23 || a>=b){
             printf("Quan khong hoat dong trong thoi gian tren! Vui long nhap lai!");
@@ -70,8 +70,8 @@ void karaoke(){
         if(a>=14 && b<=17){
             tien *=0.9;
         }
-        printf("Tong gio hat la: \n", t);
-        printf("So tien can phai thanh toan la: ", tien);
+        printf("Tong gio hat la: %d\n", t);
+        printf("So tien can phai thanh toan la: %d", tien);
     }
 
 void tiendien(){
@@ -224,8 +224,7 @@ int main (){
     printf("Chuong trinh 6: Tinh lai xuat ngan hang vai tra gop.\n");
     printf("Chuong trinh 7: Vay tien mua xe.\n");
     printf("Chuong trinh 8: Sap xep thong tin sinh vien.\n");
-    printf("Chuong trinh 9:\n");
-    printf("Chuong trinh 10:\n");
+    printf("0. Thoat\n");
     printf("Moi ban chon truong trinh: ");
     scanf("%d", &luachon);
     switch (luachon){
@@ -261,6 +260,13 @@ int main (){
             sapxep();
             break;
         }
+        case 0:{
+            printf("Thoat chuong trinh\n");
+        return 0;
+        default:
+        printf("Lua chon khong hop le\n");
+        break;
     }
+    }while(luachon !=0);
     return 0;
 }
